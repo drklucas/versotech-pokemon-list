@@ -5,24 +5,21 @@ import 'package:app/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-part 'poke.list.controller.g.dart';
+part 'poke.item.controller.g.dart';
 
-class PokeListController = _PokeListController with _$PokeListController;
+class PokeItemController = _PokeItemController with _$PokeItemController;
 
-abstract class _PokeListController with Store {
+abstract class _PokeItemController with Store {
   @observable
-  ObservableList<PokeModel> items = ObservableList<PokeModel>();
+  PokeModel? item;
 
-  @action
-  get(BuildContext context) async {
+  @action 
+   get(BuildContext context) async {
     ServiceData serviceData = await PokeListService.get(context);
 
     if(serviceData.ok) {
       final List results = serviceData.data['results'];
-      items.clear();
-      for (var poke in results) {
-        items.add(PokeModel.fromMap(poke));
-      }
+      //TODO
     } else {
       AppToast.error(serviceData.msg); 
     }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'poke.list.controller.dart';
+part of 'poke.item.controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,25 +8,25 @@ part of 'poke.list.controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$PokeListController on _PokeListController, Store {
-  late final _$itemsAtom =
-      Atom(name: '_PokeListController.items', context: context);
+mixin _$PokeItemController on _PokeItemController, Store {
+  late final _$itemAtom =
+      Atom(name: '_PokeItemController.item', context: context);
 
   @override
-  ObservableList<PokeModel> get items {
-    _$itemsAtom.reportRead();
-    return super.items;
+  PokeModel? get item {
+    _$itemAtom.reportRead();
+    return super.item;
   }
 
   @override
-  set items(ObservableList<PokeModel> value) {
-    _$itemsAtom.reportWrite(value, super.items, () {
-      super.items = value;
+  set item(PokeModel? value) {
+    _$itemAtom.reportWrite(value, super.item, () {
+      super.item = value;
     });
   }
 
   late final _$getAsyncAction =
-      AsyncAction('_PokeListController.get', context: context);
+      AsyncAction('_PokeItemController.get', context: context);
 
   @override
   Future get(BuildContext context) {
@@ -36,7 +36,7 @@ mixin _$PokeListController on _PokeListController, Store {
   @override
   String toString() {
     return '''
-items: ${items}
+item: ${item}
     ''';
   }
 }
