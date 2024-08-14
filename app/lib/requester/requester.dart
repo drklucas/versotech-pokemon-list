@@ -7,5 +7,6 @@ abstract class RequestDispatcher {
     required BuildContext context,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
+    bool? fullUrl, 
   });
 }

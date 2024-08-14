@@ -25,6 +25,22 @@ mixin _$PokeListController on _PokeListController, Store {
     });
   }
 
+  late final _$metaAtom =
+      Atom(name: '_PokeListController.meta', context: context);
+
+  @override
+  PaginationMeta get meta {
+    _$metaAtom.reportRead();
+    return super.meta;
+  }
+
+  @override
+  set meta(PaginationMeta value) {
+    _$metaAtom.reportWrite(value, super.meta, () {
+      super.meta = value;
+    });
+  }
+
   late final _$getAsyncAction =
       AsyncAction('_PokeListController.get', context: context);
 
@@ -36,7 +52,8 @@ mixin _$PokeListController on _PokeListController, Store {
   @override
   String toString() {
     return '''
-items: ${items}
+items: ${items},
+meta: ${meta}
     ''';
   }
 }
