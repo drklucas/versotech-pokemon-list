@@ -15,7 +15,7 @@ abstract class _PokeListController with Store {
   ObservableList<PokeModel> items = ObservableList<PokeModel>();
 
   @observable
-  PaginationMeta meta = PaginationMeta(limit: 10, offset: 0, count: 0);
+  PaginationMeta meta = PaginationMeta(limit: 15, offset: 0, count: 0);
 
   @action
   get(BuildContext context) async {

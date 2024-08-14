@@ -5,11 +5,12 @@ class SplashWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'PokeList',
       home: Scaffold(
+        backgroundColor: Colors.grey.shade50,
         body: Center(
-          child: CircularProgressIndicator(),
+          child: Image.asset('assets/pokeball.png'),
         ),
       ),
     );

@@ -6,6 +6,12 @@ import 'colors.dart';
 class AppTheme {
   static ThemeData theme = ThemeData(
     primaryColor: AppColors.mainAppColor,
+     colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: AppColors.mainAppColor,
+        ),
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+          color: AppColors.mainAppColor,
+        ),
     appBarTheme: AppBarTheme(
       titleTextStyle: const TextStyle(fontSize: 18),
       color: AppColors.mainAppColor,
@@ -48,14 +54,13 @@ class AppTheme {
   );
 
   static BoxDecoration boxDecoration = BoxDecoration(
-    borderRadius: BorderRadius.circular(8),
     color: Colors.white,
+    borderRadius: BorderRadius.circular(16),
     boxShadow: [
       BoxShadow(
-          offset: const Offset(0, 1),
-          blurRadius: 4,
-          spreadRadius: 0,
-          color: Colors.grey.shade300),
+          offset: const Offset(0, 2),
+          blurRadius: 6,
+          color: Colors.grey.shade200)
     ],
   );
 }

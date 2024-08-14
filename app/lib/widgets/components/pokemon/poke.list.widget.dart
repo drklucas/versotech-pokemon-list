@@ -1,5 +1,5 @@
 import 'package:app/controllers/poke.list.controller.dart';
-import 'package:app/widgets/components/poke.list.item.widget.dart';
+import 'package:app/widgets/components/pokemon/poke.list.item.widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:flutter/material.dart';

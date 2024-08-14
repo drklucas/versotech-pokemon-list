@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   runApp(const SplashWidget()); 
-  Future.delayed(const Duration(seconds: 1)); 
+  await Future.delayed(const Duration(milliseconds: 1600)); 
   runApp(const MyApp());
 }
 

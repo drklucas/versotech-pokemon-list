@@ -1,5 +1,5 @@
 import 'package:app/models/pokemon/poke.model.dart';
-import 'package:app/widgets/components/poke.item.widget.dart';
+import 'package:app/widgets/components/pokemon/poke.item.widget.dart';
 import 'package:flutter/material.dart';
 
 class PokeItemScreen extends StatefulWidget {

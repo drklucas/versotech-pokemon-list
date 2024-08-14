@@ -1,8 +1,11 @@
+import 'package:app/config/colors.dart';
 import 'package:app/config/theme.dart';
 import 'package:app/controllers/poke.item.controller.dart';
 import 'package:app/models/pokemon/poke.model.dart';
-import 'package:app/widgets/components/abilities.list.widget.dart';
-import 'package:app/widgets/components/stat.list.widget.dart';
+import 'package:app/widgets/components/pokemon/ability/abilities.list.widget.dart';
+import 'package:app/widgets/components/pokemon/sprite/sprite.list.widget.dart';
+import 'package:app/widgets/components/pokemon/stat/stat.list.widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -58,14 +61,14 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
                       children: [
                         const Icon(
                           Icons.arrow_back_ios,
-                          color: Colors.grey,
+                          color: AppColors.mainAppColor,
                           size: 18,
                         ),
                         Text(
                           'Return',
                           style: Theme.of(context).textTheme.bodyLarge?.merge(
                                 TextStyle(
-                                  color: Colors.grey.shade600,
+                                  color: AppColors.mainAppColor,
                                 ),
                               ),
                         ),
@@ -89,11 +92,12 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
               width: double.maxFinite,
               child: Row(
                 children: [
-                  Image.network(
-                    controller.item?.imageUrl ?? '',
-                    // fit: BoxFit.cover,
-                    height: 100,
-                    width: 100,
+                  CachedNetworkImage(
+                    imageUrl: controller.item?.imageUrl ?? '',
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    height: 95,
+                    width: 95,
+                    fit: BoxFit.cover,
                   ),
                   Expanded(
                     child: Column(
@@ -101,18 +105,23 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
                       children: [
                         Row(
                           children: [
-                            Text(
-                              'Name: ',
-                              style:
-                                  Theme.of(context).textTheme.bodySmall?.merge(
-                                        TextStyle(
-                                          color: Colors.grey.shade700,
-                                        ),
-                                      ),
-                            ),
+                            // Text(
+                            //   'Name: ',
+                            //   style:
+                            //       Theme.of(context).textTheme.bodySmall?.merge(
+                            //             TextStyle(
+                            //               color: Colors.grey.shade700,
+                            //             ),
+                            //           ),
+                            // ),
                             Text(
                               '${controller.item?.name}',
-                              style: Theme.of(context).textTheme.titleLarge,
+                              style:
+                                  Theme.of(context).textTheme.titleLarge?.merge(
+                                        const TextStyle(
+                                          fontSize: 21,
+                                        ),
+                                      ),
                             ),
                           ],
                         ),
@@ -129,7 +138,12 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
                             ),
                             Text(
                               '${controller.item?.height}cm',
-                              style: Theme.of(context).textTheme.titleSmall,
+                              style:
+                                  Theme.of(context).textTheme.titleSmall?.merge(
+                                        const TextStyle(
+                                          fontSize: 14,
+                                        ),
+                                      ),
                             ),
                           ],
                         ),
@@ -146,7 +160,12 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
                             ),
                             Text(
                               '${controller.item?.weight}g',
-                              style: Theme.of(context).textTheme.titleSmall,
+                              style:
+                                  Theme.of(context).textTheme.titleSmall?.merge(
+                                        const TextStyle(
+                                          fontSize: 14,
+                                        ),
+                                      ),
                             ),
                           ],
                         ),
@@ -172,6 +191,7 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
@@ -206,6 +226,7 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
               width: double.maxFinite,
               padding: const EdgeInsets.all(16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -224,6 +245,40 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
                 ],
               ),
             ),
+            const SizedBox(height: 16),
+            if (controller.item != null && controller.item?.sprites != null)
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 2),
+                        blurRadius: 6,
+                        color: Colors.grey.shade200)
+                  ],
+                ),
+                width: double.maxFinite,
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Sprites',
+                          style: Theme.of(context).textTheme.labelMedium?.merge(
+                                TextStyle(
+                                  color: Colors.grey.shade700,
+                                ),
+                              ),
+                        ),
+                      ],
+                    ),
+                    SpriteListWidget(controller.item!.sprites),
+                  ],
+                ),
+              ),
           ],
         ),
       );
