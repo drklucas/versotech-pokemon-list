@@ -7,7 +7,7 @@ class AppToast {
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
+       timeInSecForIosWeb: 2,
         backgroundColor: Colors.red.shade700,
         textColor: Colors.white,
         fontSize: 16.0);
@@ -18,7 +18,7 @@ class AppToast {
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
+        timeInSecForIosWeb: 2,
         backgroundColor: Colors.green.shade700,
         textColor: Colors.white,
         fontSize: 16.0);
@@ -29,7 +29,7 @@ class AppToast {
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
+        timeInSecForIosWeb: 2,
         backgroundColor: Colors.yellow.shade700,
         textColor: Colors.white,
         fontSize: 16.0);
