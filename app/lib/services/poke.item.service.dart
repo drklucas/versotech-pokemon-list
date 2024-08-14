@@ -7,9 +7,10 @@ import 'package:provider/provider.dart';
 
 class PokeItemService {
   static Future<ServiceData> get(BuildContext context,
-      {required int id}) async {
+      {required String url}) async {
     ResponseData response = await context.read<RequestDispatcher>().get(
-          ApiRoutes.pokeItem.GET(id),
+          url,
+          fullUrl: true,
           context: context,
         );
 

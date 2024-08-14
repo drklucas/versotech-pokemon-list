@@ -29,8 +29,22 @@ mixin _$PokeItemController on _PokeItemController, Store {
       AsyncAction('_PokeItemController.get', context: context);
 
   @override
-  Future get(BuildContext context) {
-    return _$getAsyncAction.run(() => super.get(context));
+  Future get(BuildContext context, {required String url}) {
+    return _$getAsyncAction.run(() => super.get(context, url: url));
+  }
+
+  late final _$_PokeItemControllerActionController =
+      ActionController(name: '_PokeItemController', context: context);
+
+  @override
+  dynamic clearItem() {
+    final _$actionInfo = _$_PokeItemControllerActionController.startAction(
+        name: '_PokeItemController.clearItem');
+    try {
+      return super.clearItem();
+    } finally {
+      _$_PokeItemControllerActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

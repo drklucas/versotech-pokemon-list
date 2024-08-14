@@ -15,6 +15,7 @@ class DioRequestDispatcher extends RequestDispatcher {
     required BuildContext context,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
+    bool? fullUrl = false, 
   }) async {
     Response response;
 
@@ -27,7 +28,7 @@ class DioRequestDispatcher extends RequestDispatcher {
       Map<String, dynamic> data0 = {};
 
       response = await dio.get(
-        ApiRoutes.URL + url,
+        fullUrl == true ? url : ApiRoutes.URL + url,
         options: Options(
           headers: headers0,
           validateStatus: (status) => true,

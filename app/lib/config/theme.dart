@@ -40,6 +40,22 @@ class AppTheme {
         fontSize: 15,
         fontWeight: FontWeight.w500,
       ),
+      labelMedium: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
     ),
+  );
+
+  static BoxDecoration boxDecoration = BoxDecoration(
+    borderRadius: BorderRadius.circular(8),
+    color: Colors.white,
+    boxShadow: [
+      BoxShadow(
+          offset: const Offset(0, 1),
+          blurRadius: 4,
+          spreadRadius: 0,
+          color: Colors.grey.shade300),
+    ],
   );
 }
