@@ -1,4 +1,5 @@
 import 'package:app/config/colors.dart';
+import 'package:app/utils/size.dart';
 import 'package:app/widgets/components/pokemon/poke.list.widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,6 @@ class PokeListScreen extends StatefulWidget {
 }
 
 class _PokeListScreenState extends State<PokeListScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +20,14 @@ class _PokeListScreenState extends State<PokeListScreen> {
       body: Stack(
         children: [
           Positioned(
-            top: -96, 
-            right: -96, 
-            child: Opacity( 
+            top: DeviceSize.isTabletDevice(context) ? -210 : -96,
+            right: DeviceSize.isTabletDevice(context) ? -210 : -96,
+            child: Opacity(
               opacity: 0.45,
               child: Image.asset(
-                'assets/pokeball.png', 
-                width: 280, 
-                height: 280,
+                'assets/pokeball.png',
+                width: DeviceSize.isTabletDevice(context) ? 480 : 280,
+                height: DeviceSize.isTabletDevice(context) ? 480 : 280,
                 fit: BoxFit.cover,
                 filterQuality: FilterQuality.high,
               ),
@@ -49,9 +48,10 @@ class _PokeListScreenState extends State<PokeListScreen> {
                           'Pokedex',
                           style: Theme.of(context).textTheme.titleLarge?.merge(
                                 TextStyle(
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.grey.shade800,
-                                    fontSize: 19),
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.grey.shade800,
+                                  fontSize: DeviceSize.isTabletDevice(context) ? 28 : 19,
+                                ),
                               ),
                         ),
                       ],
