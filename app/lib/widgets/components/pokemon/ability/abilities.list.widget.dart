@@ -10,8 +10,8 @@ class AbilitiesListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       
-      spacing: 4.0, // Espaçamento horizontal entre os itens
-      runSpacing: 4.0, // Espaçamento vertical entre as linhas
+      spacing: 4.0, 
+      runSpacing: 4.0, 
       children: List.generate(
         items.length,
         (index) {

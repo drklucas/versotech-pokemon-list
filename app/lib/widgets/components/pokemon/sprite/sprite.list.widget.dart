@@ -1,4 +1,5 @@
 import 'package:app/models/pokemon/sprite.model.dart';
+import 'package:app/utils/size.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -13,29 +14,29 @@ class SpriteListWidget extends StatelessWidget {
         CachedNetworkImage(
           imageUrl: item.front_default, 
           errorWidget: (context, url, error) => Icon(Icons.error),
-          height: 64,
-          width: 64,
+          height: DeviceSize.isTabletDevice(context) ? 124 : 64,
+          width:  DeviceSize.isTabletDevice(context) ? 124 : 64,
           fit: BoxFit.cover,
         ),
         CachedNetworkImage(
           imageUrl: item.back_default, 
           errorWidget: (context, url, error) => Icon(Icons.error),
-          height: 64,
-          width: 64,
+          height: DeviceSize.isTabletDevice(context) ? 124 : 64,
+          width:  DeviceSize.isTabletDevice(context) ? 124 : 64,
           fit: BoxFit.cover,
         ),
         CachedNetworkImage(
           imageUrl: item.front_shiny, 
           errorWidget: (context, url, error) => Icon(Icons.error),
-          height: 64,
-          width: 64,
+          height:  DeviceSize.isTabletDevice(context) ? 124 : 64,
+          width:  DeviceSize.isTabletDevice(context) ? 124 : 64,
           fit: BoxFit.cover,
         ),
         CachedNetworkImage(
           imageUrl: item.back_shiny, 
           errorWidget: (context, url, error) => Icon(Icons.error),
-          height: 64,
-          width: 64,
+          height:  DeviceSize.isTabletDevice(context) ? 124 : 64,
+          width:  DeviceSize.isTabletDevice(context) ? 124 : 64,
           fit: BoxFit.cover,
         ),
       ],

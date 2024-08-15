@@ -1,4 +1,5 @@
 import 'package:app/models/pokemon/stat.model.dart';
+import 'package:app/utils/size.dart';
 import 'package:flutter/material.dart';
 
 class StatItemWidget extends StatelessWidget {
@@ -28,6 +29,7 @@ class StatItemWidget extends StatelessWidget {
                       color: item.baseStat == 50
                           ? Colors.grey.shade600
                           : Colors.white,
+                      fontSize: DeviceSize.isTabletDevice(context) ? 21 : null,
                     ),
                   ),
             ),
@@ -39,6 +41,7 @@ class StatItemWidget extends StatelessWidget {
                       color: item.baseStat == 50
                           ? Colors.grey.shade700
                           : Colors.white,
+                      fontSize: DeviceSize.isTabletDevice(context) ? 24 : null,
                     ),
                   ),
             ),
