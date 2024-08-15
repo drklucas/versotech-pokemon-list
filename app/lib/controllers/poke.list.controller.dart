@@ -1,6 +1,7 @@
 import 'package:app/models/pagination.meta.dart';
 import 'package:app/models/pokemon/poke.model.dart';
 import 'package:app/models/service.data.dart';
+import 'package:app/services/poke.item.service.dart';
 import 'package:app/services/poke.list.service.dart';
 import 'package:app/utils/toast.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,13 @@ abstract class _PokeListController with Store {
 
       final List results = serviceData.data['results'];
 
+      int count = 1;
       for (var poke in results) {
-        items.add(PokeModel.fromMap(poke));
+        PokeModel pokeData = PokeModel.fromMap(poke);
+        pokeData.imageUrl =
+            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(meta.offset -10) + count}.png';
+        items.add(pokeData);
+        count++; 
       }
     } else {
       AppToast.error(serviceData.msg);
