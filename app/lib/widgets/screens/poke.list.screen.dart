@@ -4,69 +4,65 @@ import 'package:flutter/material.dart';
 
 import '../../config/theme.dart';
 
-class PokeListScreen extends StatelessWidget {
+class PokeListScreen extends StatefulWidget {
   const PokeListScreen({super.key});
+
+  @override
+  State<PokeListScreen> createState() => _PokeListScreenState();
+}
+
+class _PokeListScreenState extends State<PokeListScreen> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        backgroundColor: AppColors.mainAppColor,
-        elevation: 0,
-        title: Text(
-          'Pokémon List',
-          style: Theme.of(context).textTheme.titleLarge?.merge(
-                const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: SizedBox(
-              height: 26,
-              width: 26,
+      body: Stack(
+        children: [
+          Positioned(
+            top: -96, 
+            right: -96, 
+            child: Opacity( 
+              opacity: 0.45,
               child: Image.asset(
-                'assets/pokeball.png',
+                'assets/pokeball.png', 
+                width: 280, 
+                height: 280,
                 fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Pokedex',
+                          style: Theme.of(context).textTheme.titleLarge?.merge(
+                                TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.grey.shade800,
+                                    fontSize: 19),
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(child: PokeListWidget()),
+                ],
               ),
             ),
           ),
         ],
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
-          child:
-              // Column(
-              // children: [
-              // Padding(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       Text(
-              //         'Pokémon List',
-              //         style: Theme.of(context).textTheme.titleLarge,
-              //       ),
-              //       SizedBox(
-              //         height: 26,
-              //         width: 26,
-              //         child: Image.asset(
-              //           'assets/pokeball.png',
-              //           fit: BoxFit.cover,
-              //         ),
-              //       ),
-
-              //     ],
-              //   ),
-              // ),
-              PokeListWidget(),
-          // ],
-          // ),
-        ),
       ),
     );
   }

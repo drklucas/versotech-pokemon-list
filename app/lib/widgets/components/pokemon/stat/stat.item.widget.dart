@@ -9,20 +9,36 @@ class StatItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(6)),
+        color: item.baseStat > 50
+            ? Colors.green.shade500
+            : item.baseStat < 50
+                ? Colors.red.shade500
+                : Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(6),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.8, vertical: 2.4),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('${item.name}: ',
-                style: Theme.of(context).textTheme.bodySmall),
+            Text(
+              '${item.name}: ',
+              style: Theme.of(context).textTheme.bodySmall?.merge(
+                    TextStyle(
+                      color: item.baseStat == 50
+                          ? Colors.grey.shade600
+                          : Colors.white,
+                    ),
+                  ),
+            ),
             Text(
               '${item.baseStat}',
               style: Theme.of(context).textTheme.bodyMedium?.merge(
                     TextStyle(
-                      fontWeight: FontWeight.w600, 
-                      color: Colors.grey.shade800
+                      fontWeight: FontWeight.w600,
+                      color: item.baseStat == 50
+                          ? Colors.grey.shade700
+                          : Colors.white,
                     ),
                   ),
             ),

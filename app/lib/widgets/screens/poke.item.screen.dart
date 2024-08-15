@@ -17,11 +17,9 @@ class _PokeItemScreenState extends State<PokeItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8), 
-          child: PokeItemWidget(widget.item),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(8), 
+        child: PokeItemWidget(widget.item),
       ),
     );
   }

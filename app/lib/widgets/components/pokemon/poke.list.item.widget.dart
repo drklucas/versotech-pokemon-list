@@ -1,6 +1,7 @@
 import 'package:app/config/theme.dart';
 import 'package:app/models/pokemon/poke.model.dart';
 import 'package:app/widgets/screens/poke.item.screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class PokeListItemWidget extends StatelessWidget {
@@ -25,14 +26,19 @@ class PokeListItemWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  item.name,
-                  style: AppTheme.theme.textTheme.labelMedium,
+                Row(
+                  children: [
+                    Text(
+                      item.name,
+                      style: AppTheme.theme.textTheme.labelMedium,
+                    ),
+                    const SizedBox(width: 4),
+                  ],
                 ),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 18,
-                  color: Colors.grey,
+                CachedNetworkImage(
+                  imageUrl: item.imageUrl,
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  fit: BoxFit.cover,
                 ),
               ],
             ),

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider( 
       providers: AppProvider.items,
       child: MaterialApp(
-        title: 'PokeList',
+        title: 'Pokedex',
         routes: AppRouter.routes,
         theme: AppTheme.theme, 
         home: const PokeListScreen(), 

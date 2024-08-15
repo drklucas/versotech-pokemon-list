@@ -46,240 +46,250 @@ class _PokeItemWidgetState extends State<PokeItemWidget> {
     return Observer(builder: (_) {
       return Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(bottom: 16),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 16),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.grey.shade500,
+                              size: 18,
+                            ),
+                            Text(
+                              'Return',
+                              style: Theme.of(context).textTheme.bodyLarge?.merge(
+                                    TextStyle(
+                                      color: Colors.grey.shade500,
+                                    ),
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                CachedNetworkImage(
+                  imageUrl: controller.item?.imageUrl ?? '',
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  height: 210,
+                  width: 250,
+                  fit: BoxFit.cover,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 2),
+                          blurRadius: 6,
+                          color: Colors.grey.shade200)
+                    ],
+                  ),
+                  width: double.maxFinite,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
                     child: Row(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.arrow_back_ios,
-                          color: AppColors.mainAppColor,
-                          size: 18,
-                        ),
-                        Text(
-                          'Return',
-                          style: Theme.of(context).textTheme.bodyLarge?.merge(
-                                TextStyle(
-                                  color: AppColors.mainAppColor,
-                                ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    '${controller.item?.name}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge
+                                        ?.merge(
+                                          const TextStyle(
+                                            fontSize: 21,
+                                          ),
+                                        ),
+                                  ),
+                                ],
                               ),
-                        ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Height: ',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.merge(
+                                          TextStyle(
+                                            color: Colors.grey.shade700,
+                                          ),
+                                        ),
+                                  ),
+                                  Text(
+                                    '${controller.item?.height}cm',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.merge(
+                                          const TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Weight: ',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.merge(
+                                          TextStyle(
+                                            color: Colors.grey.shade700,
+                                          ),
+                                        ),
+                                  ),
+                                  Text(
+                                    '${controller.item?.weight}g',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall
+                                        ?.merge(
+                                          const TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 2),
-                      blurRadius: 6,
-                      color: Colors.grey.shade200)
-                ],
-              ),
-              width: double.maxFinite,
-              child: Row(
-                children: [
-                  CachedNetworkImage(
-                    imageUrl: controller.item?.imageUrl ?? '',
-                    errorWidget: (context, url, error) => Icon(Icons.error),
-                    height: 95,
-                    width: 95,
-                    fit: BoxFit.cover,
+                ),
+                const SizedBox(height: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 2),
+                          blurRadius: 6,
+                          color: Colors.grey.shade200)
+                    ],
                   ),
-                  Expanded(
+                  width: double.maxFinite,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            // Text(
-                            //   'Name: ',
-                            //   style:
-                            //       Theme.of(context).textTheme.bodySmall?.merge(
-                            //             TextStyle(
-                            //               color: Colors.grey.shade700,
-                            //             ),
-                            //           ),
-                            // ),
                             Text(
-                              '${controller.item?.name}',
+                              'Abilities',
                               style:
-                                  Theme.of(context).textTheme.titleLarge?.merge(
-                                        const TextStyle(
-                                          fontSize: 21,
-                                        ),
-                                      ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Height: ',
-                              style:
-                                  Theme.of(context).textTheme.bodySmall?.merge(
+                                  Theme.of(context).textTheme.labelMedium?.merge(
                                         TextStyle(
                                           color: Colors.grey.shade700,
                                         ),
                                       ),
                             ),
-                            Text(
-                              '${controller.item?.height}cm',
-                              style:
-                                  Theme.of(context).textTheme.titleSmall?.merge(
-                                        const TextStyle(
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                            ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              'Weight: ',
-                              style:
-                                  Theme.of(context).textTheme.bodySmall?.merge(
-                                        TextStyle(
-                                          color: Colors.grey.shade700,
-                                        ),
-                                      ),
-                            ),
-                            Text(
-                              '${controller.item?.weight}g',
-                              style:
-                                  Theme.of(context).textTheme.titleSmall?.merge(
-                                        const TextStyle(
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                            ),
-                          ],
-                        ),
+                        const SizedBox(height: 8),
+                        AbilitiesListWidget(controller.item?.abilities ?? []),
                       ],
                     ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 2),
-                      blurRadius: 6,
-                      color: Colors.grey.shade200)
-                ],
-              ),
-              width: double.maxFinite,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Abilities',
-                          style: Theme.of(context).textTheme.labelMedium?.merge(
-                                TextStyle(
-                                  color: Colors.grey.shade700,
-                                ),
-                              ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    AbilitiesListWidget(controller.item?.abilities ?? []),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 2),
-                      blurRadius: 6,
-                      color: Colors.grey.shade200)
-                ],
-              ),
-              width: double.maxFinite,
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Stats',
-                        style: Theme.of(context).textTheme.labelMedium?.merge(
-                              TextStyle(
-                                color: Colors.grey.shade700,
-                              ),
-                            ),
-                      ),
+                const SizedBox(height: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 2),
+                          blurRadius: 6,
+                          color: Colors.grey.shade200)
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  StatListWidget(controller.item?.stats ?? []),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            if (controller.item != null && controller.item?.sprites != null)
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(0, 2),
-                        blurRadius: 6,
-                        color: Colors.grey.shade200)
-                  ],
-                ),
-                width: double.maxFinite,
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Sprites',
-                          style: Theme.of(context).textTheme.labelMedium?.merge(
-                                TextStyle(
-                                  color: Colors.grey.shade700,
+                  width: double.maxFinite,
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Stats',
+                            style: Theme.of(context).textTheme.labelMedium?.merge(
+                                  TextStyle(
+                                    color: Colors.grey.shade700,
+                                  ),
                                 ),
-                              ),
-                        ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      StatListWidget(controller.item?.stats ?? []),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                if (controller.item != null && controller.item?.sprites != null)
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                            offset: const Offset(0, 2),
+                            blurRadius: 6,
+                            color: Colors.grey.shade200)
                       ],
                     ),
-                    SpriteListWidget(controller.item!.sprites),
-                  ],
-                ),
-              ),
-          ],
+                    width: double.maxFinite,
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Sprites',
+                              style:
+                                  Theme.of(context).textTheme.labelMedium?.merge(
+                                        TextStyle(
+                                          color: Colors.grey.shade700,
+                                        ),
+                                      ),
+                            ),
+                          ],
+                        ),
+                        SpriteListWidget(controller.item!.sprites),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
         ),
       );
     });

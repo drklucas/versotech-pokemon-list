@@ -6,16 +6,16 @@ import 'package:app/models/pokemon/stat.model.dart';
 import 'package:collection/collection.dart';
 
 class PokeModel {
-  final int id;
-  final String name;
-  final String imageUrl;
-  final Sprite sprites; 
-  final String species; 
-  final String url; 
-  final int height;
-  final int weight;
-  final List<Ability> abilities;
-  final List<Stat> stats;
+  int id;
+  String name;
+  String imageUrl;
+  Sprite sprites; 
+  String species; 
+  String url; 
+  int height;
+  int weight;
+  List<Ability> abilities;
+  List<Stat> stats;
   PokeModel({
     required this.id,
     required this.name,
